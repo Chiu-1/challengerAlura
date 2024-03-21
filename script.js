@@ -1,5 +1,5 @@
 const matriz = [
-    ["a","ai"],
+    ["a","al"],
     ["e","enter"],
     ["i","imes"],
     ["o","ober"],
@@ -9,7 +9,7 @@ const matriz = [
 function btnEncriptars(){
     //const texto = encriptar(textoOriginal.value);
     campoMensaje.value = encriptar(textoOriginal.value);
-
+    textoOriginal.value="";
 }
 
 function encriptar(texto){
@@ -19,11 +19,37 @@ function encriptar(texto){
             texto=texto.replaceAll(
                 matriz[i][0],
                 matriz[i][1]
-            )
+            );
         }
         
-        
+        console.log (i);
+  
     }
-
+    
     return texto;
+}
+
+function btnDesencriptar(){
+    campoMensaje.value = desencriptar(textoOriginal.value);
+    textoOriginal = "";
+}
+function desencriptar(textoDesencriptar){
+    
+   for(let i=0; i < matriz.length; i++){
+        if (textoDesencriptar.includes(matriz[i][1])){
+            textoDesencriptar=textoDesencriptar.replaceAll(
+                matriz[i][1],
+                matriz[i][0]
+            );
+              
+        }
+        console.log (i);
+        
+   }
+    return textoDesencriptar; 
+}
+
+function btncopiar(){
+    let ctrc = campoMensaje.value;
+    navigator.clipboard.writeText(campoMensaje.value);
 }
